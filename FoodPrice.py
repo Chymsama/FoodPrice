@@ -39,8 +39,45 @@ x = df.groupby(['ProductName'])['Price'].mean()
 print(x)
 
 
-# In[ ]:
+# In[8]:
 
 
+df=df.drop_duplicates(['ProductId'], keep='last')
+df.head(3)
 
+
+# In[9]:
+
+
+df.drop_duplicates(['ProductId'],keep='last').reset_index(drop=True)
+
+
+# In[10]:
+
+
+df.head(3)
+
+
+# In[21]:
+
+
+df_pro=df.loc[:,['ProductId','ProductName','UmId','UmName']]
+
+
+# In[23]:
+
+
+df_pri =df.loc[:,['ProductId','Place','Month','Year','Price']]
+
+
+# In[13]:
+
+
+df.loc[10:20,['ProductId','Place','Month','Year','Price']]
+
+
+# In[24]:
+
+
+pd.merge(df_pro,df_pri, on='ProductId')
 
